@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FREE MOVIE TICKET GIVEAWAY</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+    body { background: #0a0a0a; color: #fff; text-align: center; padding: 20px; }
+    .container { max-width: 500px; margin: 0 auto; background: #111; border-radius: 15px; padding: 30px 20px; border: 2px solid #ffcc00; }
+    .logo { font-size: 24px; font-weight: bold; color: #ffcc00; margin-bottom: 10px; }
+    h1 { font-size: 26px; margin: 15px 0; color: #ffcc00; }
+    .movie-name { color: #00ff88; font-weight: bold; font-size: 22px; }
+    .movie-poster { width: 100%; border-radius: 10px; margin: 10px 0; }
+    .countdown { background: #ff0000; padding: 10px; border-radius: 8px; font-size: 18px; margin: 15px 0; }
+    .left { background: #222; padding: 10px; border-radius: 8px; margin: 15px 0; font-size: 16px; }
+    .btn { display: block; background: linear-gradient(90deg, #ffcc00, #ff8800); color: #000; font-size: 20px; font-weight: bold; padding: 18px; border-radius: 12px; text-decoration: none; margin: 20px 0; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
+    .proof { font-size: 14px; color: #aaa; margin-top: 10px; }
+    .footer { font-size: 12px; color: #666; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">🎬 USA REWARDS CENTER 🎬</div>
+    <img src="https://via.placeholder.com/400x200/ffcc00/000?text=MOVIE" id="moviePoster" class="movie-poster" alt="Movie Poster">
+    <h1>🎬 FREE MOVIE TICKET GIVEAWAY 🎬</h1>
+    <p>To celebrate <span class="movie-name" id="movieName">MOVIE</span> we are giving away $100 Fandango Cards!</p>
+    <div class="countdown">⏰ Offer ends in: <span id="timer">04:23:11</span></div>
+    <div class="left">🔥 Only <span id="leftCount">23</span> Cards Left!</div>
+    <p>Complete 1 quick offer to claim your card.</p>
+    <a href="https://www.cpagrip.com/view.php?id=1906441" class="btn">CLAIM MY FREE TICKETS NOW</a>
+    <div class="proof"><span id="winner">Sarah from Texas just claimed $100</span></div>
+    <div class="footer">Promotional giveaway. Not affiliated with Fandango.</div>
+</div>
+<script>
+    const MOVIES = [
+        {name: "AVENGERS: DOOMSDAY", poster: "https://via.placeholder.com/400x200/ffcc00/000?text=AVENGERS+DOOMSDAY"},
+        {name: "SUPERMAN", poster: "https://via.placeholder.com/400x200/0088ff/000?text=SUPERMAN"},
+        {name: "JURASSIC WORLD: REBIRTH", poster: "https://via.placeholder.com/400x200/00ff88/000?text=JURASSIC+WORLD"}
+    ];
+    const movie = MOVIES[Math.floor(Math.random() * MOVIES.length)];
+    document.getElementById('movieName').innerText = movie.name;
+    document.getElementById('moviePoster').src = movie.poster;
+    document.querySelector('.btn').href = "YOUR_CPAGRIP_LOCKER_LINK_HERE";
+    let time = 4*3600 + 23*60 + 11;
+    setInterval(() => {
+        let h = Math.floor(time/3600); let m = Math.floor((time%3600)/60); let s = time%60;
+        document.getElementById('timer').innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+        time--; if(time<0) time=4*3600 + 23*60 + 11;
+    }, 1000);
+    let left = 23;
+    setInterval(() => { if(left > 5) { left--; document.getElementById('leftCount').innerText = left; } }, 30000);
+</script>
+</body>
+</html>
